@@ -17,6 +17,7 @@ A light-weight module that brings `window.fetch` to Node.js
 
 - [Motivation](#motivation)
 - [Features](#features)
+- [Changes in this fork](#changes-in-this-fork)
 - [Difference from client-side fetch](#difference-from-client-side-fetch)
 - [Installation](#installation)
 - [Loading and configuring the module](#loading-and-configuring-the-module)
@@ -54,6 +55,10 @@ A light-weight module that brings `window.fetch` to Node.js
 Instead of implementing `XMLHttpRequest` in Node.js to run browser-specific [Fetch polyfill](https://github.com/github/fetch), why not go from native `http` to `fetch` API directly? Hence, `node-fetch`, minimal code for a `window.fetch` compatible API on Node.js runtime.
 
 See Matt Andrews' [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch) or Leonardo Quixada's [cross-fetch](https://github.com/lquixada/cross-fetch) for isomorphic usage (exports `node-fetch` for server-side, `whatwg-fetch` for client-side).
+
+## Changes in this fork
+
+- Handle case where socket errors can be double-emitted by node, by ignoring all but the first error signal.
 
 ## Features
 
