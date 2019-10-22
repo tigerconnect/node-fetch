@@ -137,6 +137,10 @@ export default class TestServer {
 			}, 1000);
 		}
 
+		if (p === '/abort') {
+			req.destroy();
+		}
+
 		if (p === '/slow') {
 			res.statusCode = 200;
 			res.setHeader('Content-Type', 'text/plain');

@@ -131,6 +131,14 @@ describe('node-fetch', () => {
 			.and.include({ type: 'system', code: 'ECONNREFUSED', errno: 'ECONNREFUSED' });
 	});
 
+	it('should reject with error on aborted request', function() {
+		// TODO: Create test that accurately represents the problem
+		const url = `${base}abort`;
+		return expect(fetch(url)).to.eventually.be.rejected
+			.and.be.an.instanceOf(FetchError)
+			.and.include({ type: 'system', code: 'ECONNRESET', errno: 'ECONNRESET' });
+	});
+
 	it('should resolve into response', function() {
 		const url = `${base}hello`;
 		return fetch(url).then(res => {

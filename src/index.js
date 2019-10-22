@@ -104,7 +104,10 @@ export default function fetch(url, opts) {
 			});
 		}
 
+		let hasSignaledError = false;
 		req.on('error', err => {
+			if (hasSignaledError) return;
+			hasSignaledError = true;
 			reject(new FetchError(`request to ${request.url} failed, reason: ${err.message}`, 'system', err));
 			finalize();
 		});
